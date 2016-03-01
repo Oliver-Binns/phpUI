@@ -71,6 +71,10 @@
 		 * @return bool Whether the object had the class originally
 		 */
 		public function removeClass($class){
+			if (($key = array_search($class, $this->classes)) !== false) {
+				unset($this->classes[$key]);
+				return true;
+			}
 			return false;
 		}
 
