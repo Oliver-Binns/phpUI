@@ -22,12 +22,17 @@
 
 		/**
 		 * UIView constructor.
+		 * @param array | string $contents The content of this HTML division.
 		 * @param string $id HTML ID Attribute
 		 * @param array $classes Classes for use with CSS and Javascript
 		 */
 		public function __construct($contents = [], $classes = [], $id = '')
 		{
 			parent::__construct($classes, $id);
+			
+			if(!is_array($contents)){
+				$this->contents = [$contents];
+			}
 			$this->contents = $contents;
 		}
 
