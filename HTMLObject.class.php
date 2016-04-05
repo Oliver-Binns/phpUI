@@ -20,6 +20,8 @@
 	 * @package phpHTML
 	 */
 	abstract class HTMLObject{
+		/** @var array $ids_used IDs must be unique, this array keeps track of which IDs have been printed already */
+		protected static $ids_used = [];
 		/** @var string $id HTML ID Attribute */
 		private $id;
 		/** @var array $classes Classes for use with CSS and Javascript */
@@ -99,6 +101,15 @@
 		 * @return string HTML string
 		 */
 		public function __toString(){
+			$id = $this->getId();
+			if(empty($id) || in_array($id, static::$ids_used)){   //ID has already been used.
+				$i = $this->generateRandomId();
+				while(in_array($id.$i, static::$ids_used)){
+					$i = $this->generateRandomId();
+				}
+				$this->setId($id.$i);
+			}
+			
 			$html = "";
 			if(!empty($this->id)){
 				$html = " id='{$this->getId()}'";
@@ -113,6 +124,17 @@
 				}
 				$html .= '\'';
 			}
+
+			array_push(static::$ids_used, $this->getId());  //Log ID use
+
 			return $html;
+		}
+
+		/**
+		 * Generates a random ID for this object if it's empty or has already been used.
+		 * @return string Randomly generated ID
+		 */
+		private static function generateRandomId(){
+			return substr(md5(microtime()),rand(0,26),5);
 		}
 	}
