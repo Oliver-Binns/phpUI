@@ -37,6 +37,10 @@
 		 */
 		public function __construct($classes = [], $id = '', $on_click = ''){
 			$this->setId($id);
+
+			if(!is_array($classes)){
+				$classes = explode(' ', $classes);
+			}
 			$this->classes = $classes;
 		}
 

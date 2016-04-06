@@ -22,7 +22,7 @@
 
 		/**
 		 * UIView constructor.
-		 * @param array | string $contents The content of this HTML division.
+		 * @param array|string $contents The content of this HTML division.
 		 * @param string $id HTML ID Attribute
 		 * @param array $classes Classes for use with CSS and Javascript
 		 */
@@ -58,12 +58,8 @@
 		public function __toString()
 		{
 			$html = '<div'. parent::__toString() .'>';
-			if(is_array($this->contents)){
-				foreach($this->contents as $content){
-					$html .= $content;
-				}
-			}else{
-				$html .= $this->contents;
+			foreach($this->contents as $content){
+				$html .= $content;
 			}
 			$html .= '</div>';
 			return $html;
