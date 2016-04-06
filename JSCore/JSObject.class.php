@@ -56,4 +56,32 @@
 			$html .= '</script>';
 			return $html;
 		}
+
+		/**
+		 * Gets the link to a particular version of an open source library.
+		 * CDNJS is used for all libraries.
+		 * This currently works for jQuery, Twitter Bootstrap, Moment.js and Bootstrap Datepicker
+		 * @param string $library A javascript libary, i.e. bootstrap, jQuery, etc.
+		 * @param $version
+		 *
+		 * @throws \Exception Throws an exception if the given library is unknown.
+		 *
+		 * @return string Link to minified JS of library
+		 */
+		public static function libraryLink($library, $version){
+			$library = strtolower($library);
+			if(strpos($library, 'jquery') !== false){
+				return "https://cdnjs.cloudflare.com/ajax/libs/jquery/{$version}/jquery.min.js";
+			}else if(strpos($library, 'moment') !== false){
+				return "https://cdnjs.cloudflare.com/ajax/libs/moment.js/{$version}/moment.min.js";
+			}else if(strpos($library, 'bootstrap') !== false){
+				if(strpos($library, 'datepicker') !== false){
+					return "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/{$version}/js/bootstrap-datepicker.min.js";
+				}else{
+					return "https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/{$version}/js/bootstrap.min.js";
+				}
+			}else{
+				throw new \Exception('Link requested for unknown JS library.');
+			}
+		}
 	}

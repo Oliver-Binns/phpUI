@@ -26,11 +26,14 @@
 		 * @param string $value       The value that the input should start with on page load
 		 * @param string $name        The name of the input element- needed for submitting a form
 		 * @param string $placeholder A placeholder text string to be displayed in the text box
+		 * @param string $on_change Javascript function to be run when the input is changed
 		 * @param bool   $disabled    True if this input should not be editable by the user
+		 * @param array  $classes   Classes for use with CSS and Javascript
 		 * @param string $id          HTML ID Attribute
 		 */
-		public function __construct($value = '', $name = '', $placeholder = '', $disabled = false, $id = ''){
-			parent::__construct('text', $value, $name, $disabled, $id);
+		public function __construct($value = '', $name = '', $placeholder = '',  $on_change = '', $disabled = false, $classes = ['form-control'], $id = ''){
+			parent::__construct('text', $value, $name, $on_change, $disabled, $classes, $id);
+			$this->placeholder = $placeholder;
 		}
 
 		/**

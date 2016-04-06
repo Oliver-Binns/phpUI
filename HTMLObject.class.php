@@ -113,16 +113,13 @@
 				}
 				$this->setId($id.$i);
 			}
-			
-			$html = "";
-			if(!empty($this->id)){
-				$html = " id='{$this->getId()}'";
-			}
+
+			$html = " id='{$this->getId()}'";
 			if(!empty($this->on_click)){
-				$html = " onclick='{$this->getOnClick()}'";
+				$html .= " onclick='{$this->getOnClick()}'";
 			}
 			if(!empty($this->classes)){
-				$html = ' class=\'';
+				$html .= ' class=\'';
 				foreach($this->classes as $class){
 					$html .= $class . ' ';
 				}
