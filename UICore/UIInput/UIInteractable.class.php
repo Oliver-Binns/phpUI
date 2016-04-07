@@ -114,4 +114,15 @@
 			}
 			return $html;
 		}
+
+		public function withLabel($text, $small = true){
+			$html = $this;
+			$label = '<label';
+			if($small){
+				$label .= " class='small'";
+			}
+			$label .= " for='{$this->getId()}'";
+			$label .= ">$text</label>";
+			return $label.$html;
+		}
 	}
