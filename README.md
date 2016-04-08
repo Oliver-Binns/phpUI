@@ -36,7 +36,9 @@ git clone https://github.com/Oliver-Binns/phpUI.git
 ```
 * Create a new PHP Document.
 * Require the phpUI Autoloader
-```require_once 'phpUI/autoloader.php';```
+```
+require_once 'phpUI/autoloader.php';
+```
 * Use phpUI Elements as according to the documentation (coming soon)
 ```
 echo new UIPage(
