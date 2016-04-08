@@ -44,6 +44,9 @@
 		 */
 		public function __construct($header = null, $body = null, $footer = null, $classes = [], $id = '', $on_click = ''){
 			parent::__construct($classes, $id, $on_click);
+			$this->header = $header;
+			$this->body = $body;
+			$this->footer = $footer;
 		}
 
 		/**

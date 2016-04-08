@@ -47,10 +47,10 @@
 		 */
 		public function __toString(){
 			$html = '<thead' . parent::__toString() . '>';
-			if($this->row instanceof UITableCell){
+			if($this->row instanceof UITableRow){
 				$html .= $this->row;
-			}else{
-				throw new \Exception("");
+			}else if(is_array($this->row)){
+				$html .= new UITableRow($this->row);
 			}
 			$html .= '</thead>';
 			return $html;

@@ -29,6 +29,8 @@
 		private $brand_name;
 		/** @var array $left_links The links to show on the left hand side of the navigation bar, next to branding */
 		private $left_links;
+		/** @var array $left_links The links to show on the right hand side of the navigation bar */
+		private $right_links;
 		/** @var bool Whether the navigation bar should automatically collapse for smaller screens */
 		private $collapse;
 
@@ -40,19 +42,21 @@
 		/**
 		 * UINav constructor.
 		 *
-		 * @param string       $brand_name The name of the website, to be displayed in the navigation bar
-		 * @param array        $left_links The links to show on the left hand side of the navigation bar, next to branding
-		 * @param array|string $classes    Classes for use with CSS and Javascript
-		 * @param int          $fixed      Determines whether the navigation bar is fixed, and whether this is to the top or the bottom of the screen
-		 * @param bool         $collapse   Whether the navigation bar should automatically collapse for smaller screens
-		 * @param bool         $inverse    Determines whether the navigation bar colours are inversed (i.e. black instead of white)
-		 * @param string       $id         HTML ID Attribute
-		 * @param string       $on_click   Javascript function to be run when the object is clicked
+		 * @param string       $brand_name  The name of the website, to be displayed in the navigation bar
+		 * @param array        $left_links  The links to show on the left hand side of the navigation bar, next to branding
+		 * @param array        $right_links The links to show on the right hand side of the navigation bar
+		 * @param array|string $classes     Classes for use with CSS and Javascript
+		 * @param int          $fixed       Determines whether the navigation bar is fixed, and whether this is to the top or the bottom of the screen
+		 * @param bool         $collapse    Whether the navigation bar should automatically collapse for smaller screens
+		 * @param bool         $inverse     Determines whether the navigation bar colours are inversed (i.e. black instead of white)
+		 * @param string       $id          HTML ID Attribute
+		 * @param string       $on_click    Javascript function to be run when the object is clicked
 		 */
-		public function __construct($brand_name, $left_links = [], $classes = [], $fixed = UINav::FIXED_NONE, $collapse = true, $inverse = false, $id = '', $on_click = ''){
+		public function __construct($brand_name, $left_links = [], $right_links = [], $classes = [], $fixed = UINav::FIXED_NONE, $collapse = true, $inverse = false, $id = '', $on_click = ''){
 			parent::__construct($classes, $id, $on_click);
 			$this->brand_name = $brand_name;
 			$this->left_links = $left_links;
+			$this->right_links = $right_links;
 			$this->fixed = $fixed;
 			$this->inverse = $inverse;
 			$this->collapse = $collapse;
@@ -67,6 +71,7 @@
 			$this->addClasses();
 
 			$list = new UIList($this->left_links, ['nav', 'navbar-nav']);
+			$list .= new UIList($this->right_links, ['nav', 'navbar-nav','navbar-right']);
 			if($this->collapse){
 				$list = new UIDiv($list, ['collapse navbar-collapse']);
 			}

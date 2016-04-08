@@ -43,7 +43,10 @@
 		 */
 		public function __toString(){
 			$html = '<td>';
-			echo $html .= '</td>';
+			foreach($this->contents as $content){
+				$html .= $content;
+			}
+			$html.='</td>';
 			return $html;
 		}
 	}
