@@ -20,7 +20,7 @@
 		private $contents;
 
 		/**
-		 * UIView constructor.
+		 * UIPageHead constructor.
 		 *
 		 * @param string       $title     The title of this page to be displayed in the page's tab on the browser.
 		 * @param array        $css_links An array of CSS links to load. These must be in the correct order.

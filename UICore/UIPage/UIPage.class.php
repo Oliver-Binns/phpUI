@@ -19,7 +19,7 @@
 		private $lang;
 		
 		/**
-		 * UIView constructor.
+		 * UIPage constructor.
 		 *
 		 * @param UIPageHead $header  Page Head HTMLObject
 		 * @param UIPageBody $body    Page Body HTMLObject

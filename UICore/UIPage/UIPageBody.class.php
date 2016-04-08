@@ -19,7 +19,7 @@
 		private $js_links;
 
 		/**
-		 * UIView constructor.
+		 * UIPageBody constructor.
 		 *
 		 * @param array|string $contents Any additional contents, such as meta data or favicons
 		 * @param array        $js_links An array of JS links to load. These must be in the correct order.

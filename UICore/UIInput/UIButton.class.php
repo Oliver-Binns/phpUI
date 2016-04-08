@@ -17,6 +17,7 @@
 		 * Initialise a new HTML Input object
 		 *
 		 * @param string $text     The text to display on the button, i.e. 'Click Here'
+		 * @param string $on_click Javascript function to be run when the object is clicked
 		 * @param string $type     The type of button, i.e. button, submit, reset
 		 * @param string $value    The value that the input should start with on page load
 		 * @param string $name     The name of the input element- needed for submitting a form
@@ -24,8 +25,9 @@
 		 * @param array  $classes  Classes for use with CSS and Javascript
 		 * @param string $id       HTML ID Attribute
 		 */
-		public function __construct($text = '', $value = '', $name = '', $disabled = false, $classes = ['btn', 'btn-sm', 'btn-primary'], $type = 'button', $id = ''){
+		public function __construct($text = '', $on_click = '', $name = '', $disabled = false, $classes = ['btn', 'btn-sm', 'btn-primary'], $type = 'button', $id = '', $value = ''){
 			parent::__construct($type, $value, $name, $disabled, $classes, $id);
+			$this->setOnClick($on_click);
 			$this->text = $text;
 		}
 

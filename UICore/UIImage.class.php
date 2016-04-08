@@ -23,7 +23,7 @@
 		private $src;
 
 		/**
-		 * UIView constructor.
+		 * UIImage constructor.
 		 *
 		 * @param string $src     The URL where we can find the image we want to display
 		 * @param string $id      HTML ID Attribute
