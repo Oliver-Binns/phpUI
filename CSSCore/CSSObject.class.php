@@ -54,7 +54,7 @@
 				}
 				$html .= '>';
 			}else if(!empty($this->css)){
-				$html = '<style'.parent::__toString().'>' . $this->css . '</script>';
+				$html = '<style'.parent::__toString().'>' . $this->css . '</style>';
 			}else{
 				$html = '';
 			}

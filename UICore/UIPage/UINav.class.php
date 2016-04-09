@@ -120,4 +120,12 @@
 				}
 			}
 		}
+
+		/**
+		 * Mutator
+		 * @param string $brand_name The name of the website, to be displayed in the navigation bar
+		 */
+		public function setBrandName($brand_name){
+			$this->brand_name = $brand_name;
+		}
 	}

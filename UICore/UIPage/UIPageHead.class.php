@@ -56,4 +56,20 @@
 			$html .= '</head>';
 			return $html;
 		}
+
+		/**
+		 * Mutator
+		 * @param string $title The title of this page to be displayed in the page's tab on the browser.
+		 */
+		public function setTitle($title){
+			$this->title = $title;
+		}
+
+		/**
+		 * Add a new CSS link to this header
+		 * @param string $link CSS links to load
+		 */
+		public function addCSSLink($link){
+			array_push($this->css_links, $link);
+		}
 	}
