@@ -12,6 +12,7 @@
 	use phpHTML\HTMLObject;
 	use phpHTML\UICore\UIList;
 	use phpHTML\UICore\UIDiv;
+	use phpHTML\UICore\UISpan;
 
 	/**
 	 * Class UINav
@@ -55,7 +56,13 @@
 		public function __construct($brand_name, $left_links = [], $right_links = [], $classes = [], $fixed = UINav::FIXED_NONE, $collapse = true, $inverse = false, $id = '', $on_click = ''){
 			parent::__construct($classes, $id, $on_click);
 			$this->brand_name = $brand_name;
+			if(is_array($left_links)){
+				$left_links = new UIList($left_links, ['nav', 'navbar-nav']);
+			}
 			$this->left_links = $left_links;
+			if(is_array($right_links)){
+				$right_links = new UIList($right_links, ['nav', 'navbar-nav', 'navbar-right']);
+			}
 			$this->right_links = $right_links;
 			$this->fixed = $fixed;
 			$this->inverse = $inverse;
@@ -70,16 +77,19 @@
 		public function __toString(){
 			$html = '<nav'.parent::__toString().'>';
 			$this->addClasses();
-
-			$list = new UIList($this->left_links, ['nav', 'navbar-nav']);
-			$list .= new UIList($this->right_links, ['nav', 'navbar-nav','navbar-right']);
+			$list = $this->left_links;
+			$list .= $this->right_links;
 			if($this->collapse){
 				$list = new UIDiv($list, ['collapse navbar-collapse']);
 				$list->setId($this->getId() . '-collapse');
 				$collapse_button = '<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#'.$this->getId().'-collapse">';
+				for($i = 0; $i < 3; $i++){
+					$collapse_button.=new UISpan([], ['icon-bar']);
+				}
+				$collapse_button.='</button>';
 			}
 
-			$html .= new UIDiv([isset($collapse_button) ? $collapse_button: '', new UIDiv([$this->brand_name], 'navbar-header'), $list], 'container-fluid');
+			$html .= new UIDiv([new UIDiv([isset($collapse_button) ? $collapse_button: '', $this->brand_name], 'navbar-header'), $list], 'container-fluid');
 			$html .= '</nav>';
 			return $html;
 		}
