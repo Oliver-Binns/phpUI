@@ -12,6 +12,7 @@
 	use phpHTML\HTMLObject;
 	use phpHTML\UICore\UIList;
 	use phpHTML\UICore\UIDiv;
+	use phpHTML\UICore\UISpan;
 
 	/**
 	 * Class UINav
@@ -68,16 +69,22 @@
 		 * @return string HTML string
 		 */
 		public function __toString(){
+			$html = '<nav'.parent::__toString().'>';
 			$this->addClasses();
 
 			$list = new UIList($this->left_links, ['nav', 'navbar-nav']);
 			$list .= new UIList($this->right_links, ['nav', 'navbar-nav','navbar-right']);
 			if($this->collapse){
 				$list = new UIDiv($list, ['collapse navbar-collapse']);
+				$list->setId($this->getId() . '-collapse');
+				$collapse_button = '<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#'.$this->getId().'-collapse">';
+				for($i = 0; $i < 3; $i++){
+					$collapse_button.=new UISpan([], ['icon-bar']);
+				}
+				$collapse_button.='</button>';
 			}
 
-			$html = '<nav'.parent::__toString().'>';
-			$html .= new UIDiv([new UIDiv([$this->brand_name], 'navbar-header'), $list], 'container-fluid');
+			$html .= new UIDiv([new UIDiv([isset($collapse_button) ? $collapse_button: '', $this->brand_name], 'navbar-header'), $list], 'container-fluid');
 			$html .= '</nav>';
 			return $html;
 		}
