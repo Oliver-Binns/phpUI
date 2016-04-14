@@ -25,6 +25,8 @@
 		private $link;
 		/** @var string $target Specifies where to open the linked document, i.e. blank, parent */
 		private $target;
+		/** @var string $name The name attribute is used as an anchor on the page for other text to link to */
+		private $name;
 
 		/**
 		 * UILink constructor.
@@ -33,14 +35,16 @@
 		 * @param string $link     The target URL for the link (where we are linking to)
 		 * @param string $on_click Javascript function to be run when the object is clicked
 		 * @param string $target   Specifies where to open the linked document, i.e. blank, parent
+		 * @param string $name     The name attribute is used as an anchor on the page for other text to link to
 		 * @param array  $classes  Classes for use with CSS and Javascript
 		 * @param string $id       HTML ID Attribute
 		 */
-		public function __construct($text, $link = '/', $on_click = '', $target = '', $classes = [], $id = ''){
+		public function __construct($text, $link = '/', $on_click = '', $target = '', $name = '', $classes = [], $id = ''){
 			parent::__construct($classes, $id, $on_click);
 			$this->text = $text;
 			$this->link = $link;
 			$this->target = $target;
+			$this->name = $name;
 		}
 
 		/**
@@ -54,6 +58,9 @@
 			}
 			if(!empty($this->link)){
 				$html .= " href='{$this->link}'";
+			}
+			if(!empty($this->name)){
+				$html .= " name='{$this->name}'";
 			}
 			$html .= '>' . $this->text . '</a>';
 			return $html;
