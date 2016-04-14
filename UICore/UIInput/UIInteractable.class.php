@@ -115,8 +115,15 @@
 			return $html;
 		}
 
+		/**
+		 * Returns the HTML string for this object with a label before it.
+		 *
+		 * @param string $text Text to display on the label.
+		 * @param bool $small Whether the label should have be in the 'small' class.
+		 * @return string HTML string
+		 */
 		public function withLabel($text, $small = true){
-			$html = $this;
+			$html = $this->__toString();
 			$label = '<label';
 			if($small){
 				$label .= " class='small'";
