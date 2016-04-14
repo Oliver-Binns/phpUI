@@ -38,6 +38,14 @@
 		}
 
 		/**
+		 * Add a new row to this table.
+		 * @param UITableRow|array $row
+		 */
+		public function addRow($row){
+			array_push($this->rows, $row);
+		}
+
+		/**
 		 * Returns the HTML string for this object
 		 * @return string HTML string
 		 */
