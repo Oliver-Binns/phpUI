@@ -14,7 +14,7 @@
 	 * @author  Oliver Binns
 	 * @package phpHTML\UICore\UIInput
 	 */
-	class UITextInput extends UIInput{
+	abstract class UITextInput extends UIInput{
 		/**
 		 * @var string $placeholder A placeholder text string to be displayed in the text box
 		 */

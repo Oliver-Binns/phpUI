@@ -25,7 +25,7 @@
 		 * @param array  $classes  Classes for use with CSS and Javascript
 		 * @param string $id       HTML ID Attribute
 		 */
-		public function __construct($text = '', $on_click = '', $name = '', $disabled = false, $classes = ['btn', 'btn-sm', 'btn-primary'], $type = 'button', $id = '', $value = ''){
+		public function __construct($text = '', $on_click = '', $name = '', $type = 'button', $disabled = false, $classes = ['btn', 'btn-sm', 'btn-primary'], $id = '', $value = ''){
 			parent::__construct($type, $value, $name, $disabled, $classes, $id);
 			$this->setOnClick($on_click);
 			$this->text = $text;
