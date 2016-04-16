@@ -43,6 +43,8 @@
 				$classes = explode(' ', $classes);
 			}
 			$this->classes = $classes;
+
+			$this->on_click = $on_click;
 		}
 		
 		/**
