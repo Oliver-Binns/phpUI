@@ -61,7 +61,7 @@
 			$html = '<input';
 			$html .= parent::__toString();
 			if(!empty($this->on_change)){
-				$html .= " name='{$this->on_change}'";
+				$html .= " onchange='{$this->on_change}'";
 			}
 			$html .= '>';
 			return $html;

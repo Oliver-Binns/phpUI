@@ -37,7 +37,6 @@
 		public function __toString(){
 			$html = '<select';
 			$html .= substr(parent::__toString(), 6);
-			$html .= '>';
 
 			foreach($this->dropdown_data as $dropdown_item){
 				$selected = '';
