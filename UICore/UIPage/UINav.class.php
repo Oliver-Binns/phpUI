@@ -57,11 +57,19 @@
 			parent::__construct($classes, $id, $on_click);
 			$this->brand_name = $brand_name;
 			if(is_array($left_links)){
-				$left_links = new UIList($left_links, ['nav', 'navbar-nav']);
+				$left_links = new UIList($left_links, ['nav', 'navbar-nav', 'navbar-left']);
+			}else if($left_links instanceof UIList){
+				$left_links->addClass('nav');
+				$left_links->addClass('navbar-nav');
+				$left_links->addClass('navbar-left');
 			}
 			$this->left_links = $left_links;
 			if(is_array($right_links)){
 				$right_links = new UIList($right_links, ['nav', 'navbar-nav', 'navbar-right']);
+			}else if($right_links instanceof UIList){
+				$right_links->addClass('nav');
+				$right_links->addClass('navbar-nav');
+				$right_links->addClass('navbar-right');
 			}
 			$this->right_links = $right_links;
 			$this->fixed = $fixed;
