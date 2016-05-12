@@ -86,11 +86,13 @@
 		 * Add a new class to this object
 		 *
 		 * @param string $class New class for use with CSS and Javascript
+		 * @return HTMLObject Returns this object so that this can be chained
 		 */
 		public function addClass($class){
 			if(!in_array($class, $this->classes)){
 				array_push($this->classes, $class);
 			}
+			return $this;
 		}
 		
 		/**
